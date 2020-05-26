@@ -5,7 +5,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import BoxPesanan from "./BoxPesanan";
+import BoxPesanan from "./HomePesananBoxPesanan";
 
 const useStyles = makeStyles({
   root: {
@@ -13,9 +13,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AktifitasPesanan() {
+export default function AktifitasPesanan(props) {
   const classes = useStyles();
-
+  console.log("cek order props HAP", props);
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -29,7 +29,7 @@ export default function AktifitasPesanan() {
         </CardContent>
       </CardActionArea>
       <Divider />
-      <BoxPesanan />
+      <BoxPesanan {...props} />
     </Card>
   );
 }

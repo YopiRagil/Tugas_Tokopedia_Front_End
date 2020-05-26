@@ -42,37 +42,38 @@ export const doLogin = () => {
     };
 };
 
-// export const registrasiUser = () => {
-//     return async (dispatch, getState) => {
-//         alert("sdh msuk tws regis1")
-//         const username = getState().register.username;
-//         const password = getState().register.password;
-//         const name = getState().register.name;
-//         const email = getState().register.email;
-//         const noTlp = getState().register.nomorTelephone;
-//         const alamat = getState().register.alamat;
-//         const avatar = getState().register.avatar;
-//         const bodyRequestUser = {
-//             username: username,
-//             password: password,
-//             name: name,
-//             email: email,
-//             no_hp: noTlp,
-//             alamat: alamat,
-//             avatar: avatar,
-//         }
-//         localStorage.clear()
-//         localStorage.setItem("username", username)
-//         await axios
-//             .post(baseUrl + "/user", bodyRequestUser, {
-//                 headers: {
-//                     "Content-Type": "application/json; charset=utf-8",
-//                 },
-//             })
-//         alert("Create account success")
+export const registrasiUser = () => {
+    return async (dispatch, getState) => {
+        alert("sdh msuk tws regis1")
+        const username = getState().user.username;
+        const password = getState().user.password;
+        const name = getState().user.name;
+        const email = getState().user.email;
+        const noTlp = getState().user.nomorTelephone;
+        const alamat = getState().user.alamat;
+        const avatar = getState().user.avatar;
+        const bodyRequestUser = {
+            username: username,
+            password: password,
+            name: name,
+            email: email,
+            no_hp: noTlp,
+            alamat: alamat,
+            avatar: avatar,
+        }
+        console.log("cek bodyrequest", bodyRequestUser)
+        // localStorage.clear()
+        // localStorage.setItem("username", username)
+        await axios
+            .post(baseUrl + "/user", bodyRequestUser, {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                },
+            })
+        alert("Create account success")
 
-//     };
-// };
+    };
+};
 
 
 

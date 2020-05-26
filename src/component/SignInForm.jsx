@@ -45,9 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormSignIn(props, postLogin) {
+export default function FormSignIn(props) {
   const classes = useStyles();
-  postLogin = async () => {
+  const postLogin = async () => {
     await props.doLogin();
     const isLogin = props.isLogin;
     // console.log("cek profileinfo", props);

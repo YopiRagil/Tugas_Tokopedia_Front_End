@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Form, InputGroup } from "react-bootstrap";
-import Notif from "./Notif";
-import NavbarProfile from "./NavbarProfile";
+import Notif from "./HeaderNotif";
+import NavbarProfile from "./HeaderNavProfile";
 
 const Header = (props) => {
   // console.log("header props", props);

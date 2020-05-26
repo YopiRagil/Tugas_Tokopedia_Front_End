@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(-3, 0, 5, 0),
-    width: "100px",
-    backgroundColor: theme.palette.main,
+    margin: theme.spacing(-4, 0, 5, 0),
+    width: "50px",
+    height: "50px",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -32,18 +32,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormRegistrasi() {
+export default function FormRegistrasi(props) {
   const classes = useStyles();
-
+  const postRegister = async () => {
+    await props.registrasiUser();
+    // await props.doLogin();
+    props.history.push("/signin");
+  };
   return (
     <Container
       component="main"
+      className="formRegister"
       style={{
         marginRight: "100px",
         backgroundColor: "white",
         boxShadow: "1px 1px 10px 2px grey",
         padding: "0px 30px 70px 30px",
-        zIndex: "99999",
       }}
       maxWidth="xs"
     >
@@ -55,10 +59,11 @@ export default function FormRegistrasi() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form method="post" className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
                 required
                 fullWidth
@@ -67,10 +72,12 @@ export default function FormRegistrasi() {
                 type="name"
                 id="name"
                 autoComplete="name"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className="fieldFormSignUp"
                 autoComplete="username"
                 name="username"
                 variant="outlined"
@@ -79,10 +86,12 @@ export default function FormRegistrasi() {
                 id="username"
                 label="User Name"
                 autoFocus
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
                 required
                 fullWidth
@@ -91,10 +100,12 @@ export default function FormRegistrasi() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
                 required
                 fullWidth
@@ -102,10 +113,12 @@ export default function FormRegistrasi() {
                 label="Email"
                 name="email"
                 autoComplete="email"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
                 required
                 fullWidth
@@ -114,10 +127,12 @@ export default function FormRegistrasi() {
                 type="nomorTelephone"
                 id="nomorTelephone"
                 autoComplete="nomorTelephone"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
                 required
                 fullWidth
@@ -126,39 +141,42 @@ export default function FormRegistrasi() {
                 type="alamat"
                 id="alamat"
                 autoComplete="alamat"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                className="fieldFormSignUp"
                 variant="outlined"
-                required
                 fullWidth
                 name="avatar"
                 label="Foto Profile"
                 type="avatar"
                 id="avatar"
                 autoComplete="avatar"
+                onChange={(el) => props.changeInput(el)}
               />
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                control={<Checkbox value="allowExtraEmails" color="success" />}
                 label="Apakah anda yakin data yang anda masukkan sudah benar?"
               />
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            id="buttonSignUp"
+            type="button"
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
+            onClick={() => postRegister()}
           >
             Daftar
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

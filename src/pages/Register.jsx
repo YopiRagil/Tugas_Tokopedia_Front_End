@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import RegisterComponent from "../component/RegisterComponent";
 import { connect } from "react-redux";
-import { doLogin, changeInputUser } from "../store/action/signInAction";
+import {
+  registrasiUser,
+  doLogin,
+  changeInputUser,
+} from "../store/action/signInAction";
 
 class Register extends Component {
   render() {
@@ -22,6 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   changeInput: (el) => changeInputUser(el),
+  registrasiUser,
   doLogin,
 };
 

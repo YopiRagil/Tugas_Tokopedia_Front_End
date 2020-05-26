@@ -15,8 +15,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BoxPesanan() {
+export default function BoxPesanan(props) {
   const classes = useStyles();
+  console.log(
+    "cek order props",
+    props.orderData.filter((item) => item.status == "baru").length
+  );
 
   return (
     <div>
@@ -36,7 +40,7 @@ export default function BoxPesanan() {
             variant="h6"
             component="h6"
           >
-            0
+            {props.orderData.filter((item) => item.status == "baru").length}
           </Typography>
         </Paper>
         <Paper>
@@ -54,7 +58,10 @@ export default function BoxPesanan() {
             variant="h6"
             component="h6"
           >
-            0
+            {
+              props.orderData.filter((item) => item.status == "siap kirim")
+                .length
+            }
           </Typography>
         </Paper>
         <Paper>

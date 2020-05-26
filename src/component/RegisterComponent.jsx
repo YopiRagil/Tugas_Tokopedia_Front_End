@@ -1,5 +1,5 @@
 import React from "react";
-import FormRegistrasi from "./FormRegister";
+import FormRegistrasi from "./RegisterForm";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -26,7 +26,7 @@ const RegisterComponent = (props) => {
         />
       </div>
       <div className="formRegistrasi">
-        <FormRegistrasi />
+        <FormRegistrasi {...props} />
         <Box mt={8}>
           <Copyright />
         </Box>

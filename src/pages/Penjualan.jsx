@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Header from "../component/Header";
-import HomeMenu from "../component/HomeMenu";
+import PenjualanMenu from "../component/PenjualanMenu";
 import { connect } from "react-redux";
 import { doLogout } from "../store/action/signInAction";
-import { getOrderList } from "../store/action/orderAction";
+import { getOrderList, getOrderCategory } from "../store/action/orderAction";
 
-class Home extends Component {
+class Penjualan extends Component {
   componentDidMount = async () => {
     this.props.getOrderList();
+    this.props.getOrderCategory();
   };
 
   render() {
@@ -22,7 +23,7 @@ class Home extends Component {
           <React.Fragment>
             <Header {...this.props} />
             <div>
-              <HomeMenu {...this.props} />
+              <PenjualanMenu {...this.props} />
             </div>
           </React.Fragment>
         ) : (
@@ -43,6 +44,7 @@ const mapStateToProps = (state) => {
     isLogin: state.user.isLogin,
     userData: state.user.userData,
     orderData: state.order.orderData,
+    orderDataCategory: state.order.orderDataCategory,
     isLoading: state.order.isLoading,
   };
 };
@@ -50,6 +52,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   doLogout,
   getOrderList,
+  getOrderCategory,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Penjualan);
