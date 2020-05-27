@@ -9,8 +9,6 @@ export const doLogin = () => {
         const username = getState().user.username;
         const password = getState().user.password;
         localStorage.clear()
-        localStorage.setItem("username", username)
-        // alert("cek action")
         await axios
             .get(baseUrl + "/auth", {
                 params: {
@@ -19,15 +17,12 @@ export const doLogin = () => {
                 }
             })
             .then(async (response) => {
-                console.log("masuk api", response.data.token)
                 await dispatch({ type: "SUCCESS_LOGIN", payload: response.data });
                 localStorage.setItem("token", response.data.token)
-                // console.log("cek storage2", localStorage)
             })
             .catch(function (error) {
             });
         const token = localStorage.getItem("token")
-        console.log("cek response1", token)
         const response = await axios
             .get(baseUrl + "/user", {
                 headers: {
@@ -44,7 +39,6 @@ export const doLogin = () => {
 
 export const registrasiUser = () => {
     return async (dispatch, getState) => {
-        alert("sdh msuk tws regis1")
         const username = getState().user.username;
         const password = getState().user.password;
         const name = getState().user.name;
@@ -61,9 +55,6 @@ export const registrasiUser = () => {
             alamat: alamat,
             avatar: avatar,
         }
-        console.log("cek bodyrequest", bodyRequestUser)
-        // localStorage.clear()
-        // localStorage.setItem("username", username)
         await axios
             .post(baseUrl + "/user", bodyRequestUser, {
                 headers: {
@@ -85,7 +76,6 @@ export const changeInputUser = (el) => {
 };
 export const doLogout = () => {
     localStorage.clear()
-    console.log("cek storage2", localStorage)
     return {
         type: "LOG_OUT",
     };

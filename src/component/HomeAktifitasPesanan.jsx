@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 export default function AktifitasPesanan(props) {
   const classes = useStyles();
-  console.log("cek order props HAP", props);
+  // console.log("cek order props HAP", props);
   return (
     <Card className={classes.root}>
       <CardActionArea>

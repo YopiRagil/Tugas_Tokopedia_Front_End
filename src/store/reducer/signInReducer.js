@@ -20,10 +20,7 @@ export default function signinReducer(state = initialState, action) {
                 isLogin: true,
             };
         case "LOG_OUT":
-            return {
-                ...state,
-                isLogin: false,
-            }
+            return initialState
         case "LOADING":
             return {
                 ...state,

@@ -6,9 +6,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    // flexWrap: "wrap",
     "& > *": {
-      //   margin: theme.spacing(1),
       width: theme.spacing(30),
       height: theme.spacing(16),
     },
@@ -17,10 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BoxPesanan(props) {
   const classes = useStyles();
-  console.log(
-    "cek order props",
-    props.orderData.filter((item) => item.status == "baru").length
-  );
 
   return (
     <div>
@@ -58,10 +52,7 @@ export default function BoxPesanan(props) {
             variant="h6"
             component="h6"
           >
-            {
-              props.orderData.filter((item) => item.status == "siap kirim")
-                .length
-            }
+            {props.orderData.filter((item) => item.status == "tersedia").length}
           </Typography>
         </Paper>
         <Paper>

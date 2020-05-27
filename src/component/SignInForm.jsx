@@ -75,7 +75,7 @@ export default function FormSignIn(props) {
             margin="normal"
             required
             fullWidth
-            id="esername"
+            id="username"
             label="User Name"
             name="username"
             autoComplete="username"
@@ -101,29 +101,29 @@ export default function FormSignIn(props) {
             control={<Checkbox value="remember" color="success" />}
             label="Remember me"
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            className={classes.submit}
-            id="buttonSignIn"
-            onClick={() => postLogin()}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          className={classes.submit}
+          id="buttonSignIn"
+          onClick={() => postLogin()}
+        >
+          Sign In
+        </Button>
+        <Grid container>
+          <Grid item xs>
+            <Link href="#" variant="body2">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href="/register" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
       </div>
       <Box mt={8}>
         <Copyright />

@@ -1,12 +1,13 @@
 import React from "react";
-import { Card, Nav, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const NavbarProfile = (props) => {
   const logOut = async () => {
     await props.doLogout();
+    await props.doClear();
   };
-  console.log("header props", props.userData.name);
+  // console.log("header props", props.userData.name);
   return (
     <Card style={{ width: "20rem" }}>
       <Card.Body className="cardProfile">
@@ -25,7 +26,6 @@ const NavbarProfile = (props) => {
         <h6>Pengaturan akun</h6>
         <Link
           onClick={logOut}
-          to="/signin"
           className="dropdown-item"
           style={{ textAlign: "center", color: "white" }}
         >

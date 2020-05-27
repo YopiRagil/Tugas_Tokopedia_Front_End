@@ -1,10 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -32,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PenjualanSorter() {
+export default function PenjualanSorter(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     sorter: "",
@@ -49,6 +47,7 @@ export default function PenjualanSorter() {
   return (
     <div>
       <FormControl
+        method="get"
         size="medium"
         variant="outlined"
         className={classes.formControl}
@@ -62,16 +61,16 @@ export default function PenjualanSorter() {
         <Select
           native
           value={state.sort}
-          onChange={handleChange}
+          onChange={(handleChange, (el) => props.changeInput(el))}
           label="Sorter"
           inputProps={{
-            name: "sorter",
+            name: "sort",
             id: "outlined-sort-native-simple",
           }}
         >
           <option aria-label="None" value="" />
-          <option value={"terbaru"}>Terbaru</option>
-          <option value={"terlama"}>Terlama</option>
+          <option value={"desc"}>Terbaru</option>
+          <option value={"asc"}>Terlama</option>
         </Select>
       </FormControl>
     </div>

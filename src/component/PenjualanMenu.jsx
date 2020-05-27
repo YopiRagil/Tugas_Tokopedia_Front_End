@@ -35,6 +35,10 @@ const PenjualanMenu = (props) => {
     await props.history.replace("/penjualan/" + statusOrder);
     props.getOrderCategory(statusOrder);
   };
+  const putOrder = async (id, statusChange) => {
+    await props.changeStatusOrder(id, statusChange);
+  };
+
   return (
     <div className={classes.root}>
       <HomeSideBar />
@@ -46,22 +50,32 @@ const PenjualanMenu = (props) => {
           <PenjualanSubMenuTop
             inputCategory={(statusOrder) => handleCategoryOrder(statusOrder)}
             allData={() => props.getOrderList()}
+            {...props}
           />
-          <Card className={classes.boxCard}>
-            {props.orderData.map((item) => (
-              <PenjualanList
-                idPesanan={item.id}
-                pembeli={item.nama_pembeli}
-                alamat={item.alamat_pembeli}
-                produk={item.produk_dipesan}
-                harga={item.harga}
-                status={item.status}
-                kodeResi={item.kode_resi}
-                tglPesan={item.created_at}
-                tglDitanggapi={item.updated_at}
-              />
-            ))}
-          </Card>
+          {props.isLoading ? (
+            <div></div>
+          ) : (
+            <Card className={classes.boxCard}>
+              {props.orderData.map((item) => (
+                <PenjualanList
+                  inputCategory={(statusOrder) =>
+                    handleCategoryOrder(statusOrder)
+                  }
+                  {...props}
+                  idPesanan={item.id}
+                  pembeli={item.nama_pembeli}
+                  alamat={item.alamat_pembeli}
+                  produk={item.produk_dipesan}
+                  harga={item.harga}
+                  status={item.status}
+                  kodeResi={item.kode_resi}
+                  tglPesan={item.created_at}
+                  tglDitanggapi={item.updated_at}
+                  changeOrder={(id, statusChange) => putOrder(id, statusChange)}
+                />
+              ))}
+            </Card>
+          )}
         </div>
       </main>
     </div>

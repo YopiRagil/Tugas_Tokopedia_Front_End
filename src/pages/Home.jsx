@@ -4,7 +4,7 @@ import Header from "../component/Header";
 import HomeMenu from "../component/HomeMenu";
 import { connect } from "react-redux";
 import { doLogout } from "../store/action/signInAction";
-import { getOrderList } from "../store/action/orderAction";
+import { getOrderList, doClear } from "../store/action/orderAction";
 
 class Home extends Component {
   componentDidMount = async () => {
@@ -12,10 +12,6 @@ class Home extends Component {
   };
 
   render() {
-    if (!this.props.isLogin) {
-      this.props.history.push("/signin");
-    }
-    console.log("userDataHome", this.props.orderData);
     return (
       <div>
         {this.props.isLogin ? (
@@ -50,6 +46,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   doLogout,
   getOrderList,
+  doClear,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

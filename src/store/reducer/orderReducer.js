@@ -1,6 +1,8 @@
 const initialState = {
     orderData: [],
     isLoading: true,
+    name: '',
+    search: '',
 };
 
 export default function orderReducer(orderState = initialState, action) {
@@ -21,7 +23,20 @@ export default function orderReducer(orderState = initialState, action) {
             return {
                 ...orderState,
                 [action.payload.target.name]: action.payload.target.value,
-            };
+            }
+        case "CLEAR":
+            return initialState
+        case "SEARCH_ORDER":
+            return {
+                ...orderState,
+                orderData: action.payload,
+                isLoading: false
+            }
+        case "SEARCH_INPUT":
+            return {
+                ...orderState,
+                search: action.payload
+            }
         default:
             return orderState
     }

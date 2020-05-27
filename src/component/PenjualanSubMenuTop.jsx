@@ -137,7 +137,7 @@ export default function PenjualanSubMenuTop(props) {
       >
         <PenjualanPilihFilter />
         <FilterDate />
-        <PenjualanSorter />
+        <PenjualanSorter {...props} />
         <PenjualanSearch />
         <Button
           variant="text"

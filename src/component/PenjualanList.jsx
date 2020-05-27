@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   keteranganStatus: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     borderRadius: "20%",
     padding: "20px",
     color: "white",
@@ -76,7 +76,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PenjualanList(props) {
   const classes = useStyles();
-
+  const changeOrderInfo = async (id, statusChange) => {
+    await props.changeOrder(id, statusChange);
+    await props.inputCategory(statusChange);
+    console.log("history", props.history);
+    props.history.replace(props.history.location.pathname);
+  };
   return (
     <div className={classes.root}>
       <ExpansionPanel defaultExpanded>
@@ -126,29 +131,88 @@ export default function PenjualanList(props) {
                   className={classes.keteranganStatus}
                   component="span"
                   m={1}
+                  style={
+                    props.status == "baru"
+                      ? { backgroundColor: "red" }
+                      : props.status == "tersedia"
+                      ? { backgroundColor: "blue" }
+                      : props.status == "batal"
+                      ? { backgroundColor: "gray" }
+                      : props.status == "dikirim"
+                      ? { backgroundColor: "green" }
+                      : { backgroundColor: "yellow" }
+                  }
                 >
                   <h2>{props.status}</h2>
                 </Box>
               </Grid>
-
-              <form
-                style={{ paddingBottom: "5px" }}
-                className={classes.root}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField id="standard-basic" label="resi" />
-              </form>
+              {props.status == "tersedia" ? (
+                <div>
+                  <form
+                    onSubmit={(el) => el.preventDefault()}
+                    method="put"
+                    style={{ paddingBottom: "5px" }}
+                    className={classes.root}
+                    noValidate
+                    autoComplete="off"
+                  >
+                    <TextField
+                      id="resi"
+                      label="masukkan nomor resi"
+                      name="resi"
+                      required
+                      fullWidth
+                      onChange={(el) => props.changeInput(el)}
+                    />
+                  </form>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </Typography>
           </div>
         </ExpansionPanelDetails>
         <Divider />
-        <ExpansionPanelActions>
-          <Button size="small">Batalkan</Button>
-          <Button size="small" color="primary">
-            Tanggapi
-          </Button>
-        </ExpansionPanelActions>
+        {props.status == "baru" || props.status == "tersedia" ? (
+          <ExpansionPanelActions>
+            <Button
+              // method="put"
+              // value="-"
+              // name="resi"
+              size="small"
+              onClick={() => changeOrderInfo(props.idPesanan, "batal")}
+            >
+              Batalkan
+            </Button>
+            {props.status == "baru" ? (
+              <Button
+                method="put"
+                name="resi"
+                value="-"
+                onClick={() => changeOrderInfo(props.idPesanan, "tersedia")}
+                color="primary"
+              >
+                Tanggapi
+              </Button>
+            ) : (
+              <Button
+                size="small"
+                type="button"
+                color="primary"
+                onClick={() => changeOrderInfo(props.idPesanan, "dikirim")}
+              >
+                Kirim
+              </Button>
+            )}
+          </ExpansionPanelActions>
+        ) : (
+          <ExpansionPanelActions>
+            {" "}
+            <Button size="small" disabled>
+              Selesai
+            </Button>
+          </ExpansionPanelActions>
+        )}
       </ExpansionPanel>
     </div>
   );
