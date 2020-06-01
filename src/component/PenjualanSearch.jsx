@@ -24,13 +24,15 @@ const theme = createMuiTheme({
   },
 });
 
-export default function PenjualanSearch() {
+export default function PenjualanSearch(props) {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate>
       <ThemeProvider theme={theme}>
         <TextField
+          onChange={props.doSearch}
+          value={props.keyword}
           className={classes.search}
           label="Search"
           variant="outlined"

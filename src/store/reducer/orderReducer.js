@@ -3,6 +3,8 @@ const initialState = {
     isLoading: true,
     name: '',
     search: '',
+    update: false,
+    statusOrder: '',
 };
 
 export default function orderReducer(orderState = initialState, action) {
@@ -12,16 +14,23 @@ export default function orderReducer(orderState = initialState, action) {
                 ...orderState,
                 isLoading: true
             }
+        case "STATUS_ORDER":
+            return {
+                ...orderState,
+                statusOrder: action.payload
+            }
         case "GET_ORDER_ALL":
             return {
                 ...orderState,
                 orderData: action.payload,
                 isLoading: false,
+                update: false,
             }
 
         case "CHANGE_INPUT_ORDER":
             return {
                 ...orderState,
+                update: true,
                 [action.payload.target.name]: action.payload.target.value,
             }
         case "CLEAR":

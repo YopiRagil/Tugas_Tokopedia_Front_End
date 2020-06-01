@@ -22,25 +22,30 @@ export default function PenjualanMenuTop() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{ margin: "0 0px 0 -20px" }}>
       <Grid container spacing={2}>
-        <Grid item sm={7}>
+        <Grid item sm={6}>
           <h3 variant="contained">Daftar Pesanan</h3>
         </Grid>
         <Grid
           item
-          sm={5}
+          sm={6}
           // spacing={10}
           container
           direction="row"
-          justify="space-around"
+          justify="flex-end"
           alignItems="center"
         >
           <Grid>
             <Button
               variant="outlined"
               size="medium"
-              style={{ backgroundColor: "white", textTransform: "none" }}
+              style={{
+                marginLeft: "-10px",
+                marginRight: "10px",
+                backgroundColor: "white",
+                textTransform: "none",
+              }}
               className={classes.button}
               startIcon={<InfoIcon />}
             >

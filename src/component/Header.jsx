@@ -5,12 +5,11 @@ import Notif from "./HeaderNotif";
 import NavbarProfile from "./HeaderNavProfile";
 
 const Header = (props) => {
-  // console.log("header props", props);
   return (
     <Navbar
       fixed="top"
       expand="lg"
-      style={{ zIndex: "9999999", background: "white" }}
+      style={{ zIndex: "9009", background: "white" }}
     >
       <Navbar.Brand href="#home">
         <img className="logotoped" src={require("../media/logo.png")} />

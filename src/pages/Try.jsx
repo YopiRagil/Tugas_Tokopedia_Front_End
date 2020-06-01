@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PenjualanMenu from "../component/PenjualanMenu";
+import Header from "../component/Headers";
 
 class Try extends Component {
   render() {
@@ -7,7 +7,7 @@ class Try extends Component {
       <div>
         <React.Fragment>
           <div>
-            <PenjualanMenu />
+            <Header />
           </div>
         </React.Fragment>
       </div>

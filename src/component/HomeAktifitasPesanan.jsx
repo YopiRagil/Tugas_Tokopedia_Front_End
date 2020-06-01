@@ -18,16 +18,14 @@ export default function AktifitasPesanan(props) {
   // console.log("cek order props HAP", props);
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h7" component="h6">
-            Penting hari ini
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Aktivitas penting untuk menjaga performa tokomu
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardContent>
+        <Typography gutterBottom variant="h7" component="h6">
+          Penting hari ini
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          Aktivitas penting untuk menjaga performa tokomu
+        </Typography>
+      </CardContent>
       <Divider />
       <BoxPesanan {...props} />
     </Card>

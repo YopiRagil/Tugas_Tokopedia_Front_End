@@ -107,7 +107,7 @@ const HomeSideBar = (props) => {
         }),
       }}
     >
-      <div style={{ marginTop: "50px" }} className={classes.toolbar}>
+      <div style={{ marginTop: "70px" }} className={classes.toolbar}>
         <IconButton onClick={handleDrawerClose}>
           <p className="my-auto ml-5" style={{ fontSize: "15px" }}>
             Sembunyikan menu

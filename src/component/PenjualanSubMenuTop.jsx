@@ -37,11 +37,23 @@ export default function PenjualanSubMenuTop(props) {
       props.history.replace("penjualan/" + statusOrder);
     }
   };
+  const getallData = async () => {
+    await props.allData();
+    props.history.push("/penjualan");
+  };
   return (
-    <Card className={classes.root}>
-      <Grid container justify="space-between" alignItems="center">
-        <h5 style={{ paddingRight: "20px", marginTop: "7px" }}>Status</h5>
-        <Link onClick={async () => await props.allData()}>
+    <Card className={classes.root} style={{ margin: "0 -10px 0 -20px" }}>
+      <Grid container justify="flex-start" alignItems="center">
+        <h6
+          style={{
+            paddingRight: "10px",
+            marginTop: "7px",
+            marginLeft: "-10px",
+          }}
+        >
+          Status
+        </h6>
+        <Link onClick={async () => getallData()}>
           <Fab
             variant="extended"
             size="medium"
@@ -136,9 +148,13 @@ export default function PenjualanSubMenuTop(props) {
         alignItems="center"
       >
         <PenjualanPilihFilter />
-        <FilterDate />
+        <FilterDate {...props} />
         <PenjualanSorter {...props} />
-        <PenjualanSearch />
+        <PenjualanSearch
+          {...props}
+          keyword={props.search}
+          doSearch={(event) => props.InputSearchOrder(event)}
+        />
         <Button
           variant="text"
           style={{

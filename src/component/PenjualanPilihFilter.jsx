@@ -7,7 +7,7 @@ import Select from "@material-ui/core/Select";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 100,
+    maxWidth: 120,
     "& .MuiOutlinedInput-root": {
       "&.Mui-focused fieldset": {
         borderColor: "green",
@@ -45,7 +45,7 @@ export default function PenjualanPilihFilter() {
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: "-30px" }}>
       <FormControl
         size="medium"
         variant="outlined"

@@ -3,6 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AktifitasPesanan from "./HomeAktifitasPesanan";
 import HomeSideBar from "./HomeSideBar";
+import Grafik from "./PenjualanGrafik";
+import Grid from "@material-ui/core/Grid";
+import { requirePropFactory } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,22 +25,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomeMenu = (props) => {
-  // console.log("home menu", props.orderData);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <HomeSideBar />
-      <main className={classes.content} style={{ backgroundColor: "#fafafa" }}>
+      <main className={classes.content} style={{ backgroundColor: "#dbdbdb" }}>
         <div className={classes.toolbar} />
-        <div className="row">
-          <div className="col-7">
-            <AktifitasPesanan {...props} />
-          </div>
-          <div className="col-5">
-            <Typography paragraph></Typography>
-          </div>
-        </div>
+        <Grid container justify="space-between">
+          <Grid md={7}>
+            <Grid>
+              <img
+                style={{ width: "100%", marginBottom: "10px" }}
+                src={require("../media/sponsore.jpg")}
+              />
+            </Grid>
+            <Grid>
+              <AktifitasPesanan {...props} />
+            </Grid>
+          </Grid>
+          <Grid style={{ paddingLeft: "30px" }} md={5}>
+            <Grafik />
+          </Grid>
+        </Grid>
       </main>
     </div>
   );

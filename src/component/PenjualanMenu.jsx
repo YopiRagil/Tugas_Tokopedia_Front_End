@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  spiner: {
+    display: "flex",
+    margin: "100px 0 0 50%",
+    alignItems: "center",
+  },
   toolbar: {
     display: "flex",
     alignItems: "center",
@@ -53,9 +58,12 @@ const PenjualanMenu = (props) => {
             {...props}
           />
           {props.isLoading ? (
-            <div></div>
+            <div className={classes.spiner}>please wait . . .</div>
           ) : (
-            <Card className={classes.boxCard}>
+            <Card
+              className={classes.boxCard}
+              style={{ margin: "0 -10px 0 -20px" }}
+            >
               {props.orderData.map((item) => (
                 <PenjualanList
                   inputCategory={(statusOrder) =>

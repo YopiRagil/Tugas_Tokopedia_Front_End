@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import Header from "../component/Header";
+import Header from "../component/Headers";
 import HomeMenu from "../component/HomeMenu";
 import { connect } from "react-redux";
-import { doLogout } from "../store/action/signInAction";
+import { doLogout, getDataUser } from "../store/action/signInAction";
 import { getOrderList, doClear } from "../store/action/orderAction";
 
 class Home extends Component {
   componentDidMount = async () => {
+    this.props.getDataUser();
     this.props.getOrderList();
   };
 
   render() {
     return (
       <div>
-        {this.props.isLogin ? (
+        {localStorage.getItem("isLogin") ? (
           <React.Fragment>
-            <Header {...this.props} />
+            <Header {...this.props.userData} {...this.props} />
             <div>
               <HomeMenu {...this.props} />
             </div>
@@ -47,6 +48,7 @@ const mapDispatchToProps = {
   doLogout,
   getOrderList,
   doClear,
+  getDataUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

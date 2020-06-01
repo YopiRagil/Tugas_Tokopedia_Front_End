@@ -14,16 +14,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FilterDate() {
+export default function FilterDate(props) {
   const classes = useStyles();
-
+  const filterDate = async (el) => {
+    props.changeInput(el);
+    await props.getOrderCategory();
+  };
   return (
     <form className={classes.container} noValidate>
       <TextField
         id="date"
         label="dari"
         type="date"
-        defaultValue="2017-05-24"
+        onChange={(el) => filterDate(el)}
+        name="startDate"
+        defaultValue="2020-05-24"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
@@ -32,8 +37,10 @@ export default function FilterDate() {
       <TextField
         id="date"
         label="sampai"
+        onChange={(el) => filterDate(el)}
+        name="endDate"
         type="date"
-        defaultValue="2017-05-24"
+        defaultValue="2020-05-24"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,

@@ -6,10 +6,13 @@ export const getOrderList = () => {
     const token = localStorage.getItem('token')
     return async (dispatch, getState) => {
         const sort = getState().order.sort;
+        const startDate = getState().order.startDate;
+        const endDate = getState().order.endDate;
         await dispatch({
             type: "LOADING_ORDER"
         });
-        console.log("cek sort", sort)
+        // console.log("cek sort", sort)
+        // console.log("cek date", startDate)
         const response = await axios.get(orderUrl + "/semua", {
             headers: {
                 Authorization: 'Bearer ' + token
@@ -17,9 +20,10 @@ export const getOrderList = () => {
             params: {
                 sort: sort,
                 orderby: "created_at",
+                start_time: startDate,
+                end_time: endDate,
             },
         });
-        console.log("response order list", response)
         dispatch({
             type: "GET_ORDER_ALL",
             payload: response.data
@@ -31,13 +35,27 @@ export const getOrderCategory = (statusOrder) => {
     const token = localStorage.getItem('token')
     return async (dispatch, getState) => {
         const sort = getState().order.sort;
+        const startDate = getState().order.startDate;
+        const endDate = getState().order.endDate;
         await dispatch({
             type: "LOADING_ORDER"
+        });
+        // console.log("cek date", startDate)
+        if (statusOrder == undefined) {
+            await dispatch({
+                type: "LOADING_ORDER"
+            });
+        }
+        await dispatch({
+            type: "STATUS_ORDER",
+            payload: statusOrder
         });
         const response = await axios.get(orderUrl + "/semua", {
             headers: {
                 Authorization: "Bearer " + token
             }, params: {
+                start_time: startDate,
+                end_time: endDate,
                 sort: sort,
                 orderby: "created_at",
             },
@@ -52,32 +70,38 @@ export const getOrderCategory = (statusOrder) => {
 export const changeStatusOrder = (id, statusChange) => {
     const token = localStorage.getItem('token')
     return async (dispatch, getState) => {
-        const resi = getState().order.resi;
-        await dispatch({
-            type: "LOADING_ORDER"
-        });
-        const bodyRequestStatus = {
-            status: statusChange,
-            kode_resi: resi,
-        }
-        const bodyJson = JSON.stringify(bodyRequestStatus)
-        console.log("cek bodyrequest", bodyJson)
-        await axios
-            .put(orderUrl + "/" + id, bodyJson, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token,
-                },
-            })
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error.response)
+        var resi = getState().order.resi;
+        // console.log("resi", resi)
+        if (statusChange == "dikirim" && resi == undefined) {
+            alert("resi belum diisi")
+        } else {
+            await dispatch({
+                type: "LOADING_ORDER"
             });
-        alert("Success")
+            var bodyRequestStatus = {
+                status: statusChange,
+                kode_resi: resi,
+            }
+            var bodyJson = JSON.stringify(bodyRequestStatus)
+            // console.log("cek bodyrequest", bodyJson)
+            await axios
+                .put(orderUrl + "/" + id, bodyJson, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + token,
+                    },
+                })
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error.response)
+                });
+            alert("Success")
 
-    };
+                ;
+        }
+    }
 };
 export const doClear = () => {
     localStorage.clear()
@@ -105,7 +129,7 @@ export const InputSearchOrder = (event) => {
 export const searchOrder = (keyword) => {
     const token = localStorage.getItem('token')
     return async (dispatch) => {
-        if (keyword.length > 0) {
+        if (keyword.length > 2) {
             await dispatch({
                 type: "LOADING_ORDER"
             });
@@ -113,6 +137,8 @@ export const searchOrder = (keyword) => {
                 const response = await axios.get(orderUrl + "/semua", {
                     headers: {
                         Authorization: 'Bearer ' + token
+                    }, params: {
+                        keyword: keyword,
                     },
                 });
                 dispatch({

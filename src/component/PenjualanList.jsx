@@ -78,9 +78,14 @@ export default function PenjualanList(props) {
   const classes = useStyles();
   const changeOrderInfo = async (id, statusChange) => {
     await props.changeOrder(id, statusChange);
-    await props.inputCategory(statusChange);
-    console.log("history", props.history);
-    props.history.replace(props.history.location.pathname);
+    if (statusChange == "dikirim" && props.resi == undefined) {
+      await props.inputCategory("tersedia");
+      props.history.replace("/penjualan/tersedia");
+    } else {
+      await props.inputCategory(statusChange);
+      console.log("history", props.history);
+      props.history.replace(props.history.location.pathname);
+    }
   };
   return (
     <div className={classes.root}>
@@ -105,7 +110,12 @@ export default function PenjualanList(props) {
             <Typography className={classes.heading}>Detail Pesanan</Typography>
           </div>
           <div className={classes.columnstatus}>
-            <Typography className={classes.heading}>Status Pesanan</Typography>
+            <Typography
+              style={{ marginLeft: "40px" }}
+              className={classes.heading}
+            >
+              Status Pesanan
+            </Typography>
           </div>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
@@ -121,12 +131,7 @@ export default function PenjualanList(props) {
           </div>
           <div className={classes.columnstatus}>
             <Typography variant="caption">
-              <Grid
-                container
-                // direction="column"
-                //   justify="center"
-                alignItems="center"
-              >
+              <Grid container alignItems="center">
                 <Box
                   className={classes.keteranganStatus}
                   component="span"

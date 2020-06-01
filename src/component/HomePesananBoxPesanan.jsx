@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import CardActionArea from "@material-ui/core/CardActionArea";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +20,7 @@ export default function BoxPesanan(props) {
   return (
     <div>
       <div className={classes.root}>
-        <Paper>
+        <CardActionArea>
           <Typography
             style={{ margin: "20px" }}
             variant="body2"
@@ -36,8 +37,8 @@ export default function BoxPesanan(props) {
           >
             {props.orderData.filter((item) => item.status == "baru").length}
           </Typography>
-        </Paper>
-        <Paper>
+        </CardActionArea>
+        <CardActionArea>
           <Typography
             style={{ margin: "20px" }}
             variant="body2"
@@ -54,8 +55,8 @@ export default function BoxPesanan(props) {
           >
             {props.orderData.filter((item) => item.status == "tersedia").length}
           </Typography>
-        </Paper>
-        <Paper>
+        </CardActionArea>
+        <CardActionArea>
           <Typography
             style={{ margin: "20px" }}
             variant="body2"
@@ -72,10 +73,10 @@ export default function BoxPesanan(props) {
           >
             0
           </Typography>
-        </Paper>
+        </CardActionArea>
       </div>
       <div className={classes.root}>
-        <Paper>
+        <CardActionArea>
           <Typography
             style={{ margin: "20px" }}
             variant="body2"
@@ -92,8 +93,8 @@ export default function BoxPesanan(props) {
           >
             0
           </Typography>
-        </Paper>
-        <Paper>
+        </CardActionArea>
+        <CardActionArea>
           <Typography
             style={{ margin: "20px" }}
             variant="body2"
@@ -110,7 +111,7 @@ export default function BoxPesanan(props) {
           >
             0
           </Typography>
-        </Paper>
+        </CardActionArea>
         <Paper />
       </div>
     </div>

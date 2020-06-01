@@ -19,8 +19,10 @@ export const doLogin = () => {
             .then(async (response) => {
                 await dispatch({ type: "SUCCESS_LOGIN", payload: response.data });
                 localStorage.setItem("token", response.data.token)
+                localStorage.setItem("isLogin", true)
             })
             .catch(function (error) {
+                console.log(error.response)
             });
         const token = localStorage.getItem("token")
         const response = await axios
@@ -36,6 +38,24 @@ export const doLogin = () => {
             })
     };
 };
+
+export const getDataUser = () => {
+    const token = localStorage.getItem("token")
+    // alert("masuk")
+    return async (dispatch) => {
+        const response = await axios
+            .get(baseUrl + "/user", {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            })
+        await
+            dispatch({
+                type: "GET_USER",
+                payload: response.data
+            })
+    };
+}
 
 export const registrasiUser = () => {
     return async (dispatch, getState) => {
