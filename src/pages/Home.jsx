@@ -19,7 +19,7 @@ class Home extends Component {
           <React.Fragment>
             <Header {...this.props.userData} {...this.props} />
             <div>
-              <HomeMenu {...this.props} />
+              <HomeMenu {...this.props.userData} {...this.props} />
             </div>
           </React.Fragment>
         ) : (

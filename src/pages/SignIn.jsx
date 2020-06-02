@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 import SignInComponent from "../component/SignInComponent";
 import { connect } from "react-redux";
 import { doLogin, changeInputUser } from "../store/action/signInAction";

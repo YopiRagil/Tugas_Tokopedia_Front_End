@@ -46,8 +46,8 @@ const PenjualanMenu = (props) => {
 
   return (
     <div className={classes.root}>
-      <HomeSideBar />
-      <main className={classes.content} style={{ backgroundColor: "#fafafa" }}>
+      <HomeSideBar {...props} />
+      <main className={classes.content} style={{ backgroundColor: "#dbdbdb" }}>
         <div className={classes.toolbar} />
         <div>
           <PenjualanMenuTop />

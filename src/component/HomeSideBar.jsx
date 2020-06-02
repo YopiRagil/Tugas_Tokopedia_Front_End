@@ -21,6 +21,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -120,23 +121,42 @@ const HomeSideBar = (props) => {
       </div>
       <Divider />
       <List>
-        <img
-          className="ml-2 logosellerno1"
-          src={require("../media/logosellerno1.png")}
-        />
+        <ListItem style={{ marginLeft: "-15px" }} button key={props.username}>
+          <ListItemIcon>
+            <img
+              alt="logoseller"
+              style={{ marginRight: "16px" }}
+              className="ml-2 logosellerno1"
+              src={require("../media/logosellerno1.png")}
+            />
+          </ListItemIcon>
+          <List>
+            <Typography style={{ fontSize: "13px", marginTop: "20px" }}>
+              {props.username}
+            </Typography>
+            <img
+              style={{ width: "11px" }}
+              src={require("../media/point.jpg")}
+            />
+            <img
+              style={{ width: "20px" }}
+              src={require("../media/follower.svg")}
+            />
+          </List>
+        </ListItem>
         <Link to="/">
           <ListItem style={{ color: "black" }} button key="Home">
             <ListItemIcon>
               <HomeIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
             </ListItemIcon>
-            <ListItemText primary="Home" />
+            <Typography style={{ fontSize: "13px" }}>Home</Typography>
           </ListItem>
         </Link>
         <ListItem button key="Chat">
           <ListItemIcon>
             <ChatIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
           </ListItemIcon>
-          <ListItemText primary="Chat" />
+          <Typography style={{ fontSize: "13px" }}>Chat</Typography>
         </ListItem>
         <ListItem button key="Produk">
           <ListItemIcon>
@@ -144,14 +164,14 @@ const HomeSideBar = (props) => {
               style={{ fontSize: "20px", marginLeft: "5px" }}
             />
           </ListItemIcon>
-          <ListItemText primary="Produk" />
+          <Typography style={{ fontSize: "13px" }}>Produk</Typography>
         </ListItem>
         <Link to="/penjualan">
           <ListItem style={{ color: "black" }} button key="Penjualan">
             <ListItemIcon>
               <AssignmentIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
             </ListItemIcon>
-            <ListItemText primary="Penjualan" />
+            <Typography style={{ fontSize: "13px" }}>Penjualan</Typography>
           </ListItem>
         </Link>
       </List>
@@ -161,7 +181,7 @@ const HomeSideBar = (props) => {
           <ListItemIcon>
             <InsertChartIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
           </ListItemIcon>
-          <ListItemText primary="Statistik" />
+          <Typography style={{ fontSize: "13px" }}>Statistik</Typography>
         </ListItem>
         <ListItem button key="Iklan dan Promosi">
           <ListItemIcon>
@@ -169,13 +189,15 @@ const HomeSideBar = (props) => {
               style={{ fontSize: "20px", marginLeft: "5px" }}
             />
           </ListItemIcon>
-          <ListItemText primary="Iklan dan Promosi" />
+          <Typography style={{ fontSize: "13px" }}>
+            Iklan dan Promosi
+          </Typography>
         </ListItem>
         <ListItem button key="Dekorasi Toko">
           <ListItemIcon>
             <DeckIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
           </ListItemIcon>
-          <ListItemText primary="Dekorasi Toko" />
+          <Typography style={{ fontSize: "13px" }}>Dekorasi Toko</Typography>
         </ListItem>
         <ListItem button key="Kata Pembeli">
           <ListItemIcon>
@@ -183,7 +205,7 @@ const HomeSideBar = (props) => {
               style={{ fontSize: "20px", marginLeft: "5px" }}
             />
           </ListItemIcon>
-          <ListItemText primary="Kata Pembeli" />
+          <Typography style={{ fontSize: "13px" }}>Kata Pembeli</Typography>
         </ListItem>
       </List>
       <Divider />
@@ -192,13 +214,15 @@ const HomeSideBar = (props) => {
           <ListItemIcon>
             <StorefrontIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
           </ListItemIcon>
-          <ListItemText primary="Pusat Edukasi Seller" />
+          <Typography style={{ fontSize: "13px" }}>
+            Pusat Edukasi Seller
+          </Typography>
         </ListItem>
         <ListItem button key="Tokopedia Care">
           <ListItemIcon>
             <HeadsetMicIcon style={{ fontSize: "20px", marginLeft: "5px" }} />
           </ListItemIcon>
-          <ListItemText primary="Tokopedia Care" />
+          <Typography style={{ fontSize: "13px" }}>Tokopedia Care</Typography>
         </ListItem>
       </List>
     </Drawer>

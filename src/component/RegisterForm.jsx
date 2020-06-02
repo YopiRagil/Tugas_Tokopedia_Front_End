@@ -54,7 +54,7 @@ export default function FormRegistrasi(props) {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <img src={require("../media/topedbaglogo.png")} />
+          <img src={require("../media/topedbaglogo.png")} alt="baglogo" />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up

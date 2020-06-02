@@ -68,7 +68,7 @@ export default function PenjualanMenuTop() {
               // variant="round"
               size="small"
               style={{
-                backgroundColor: "#fafafa",
+                backgroundColor: "#dbdbdb",
                 textTransform: "none",
                 boxShadow: "none",
               }}

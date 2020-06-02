@@ -20,8 +20,8 @@ class Penjualan extends Component {
     this.props.getOrderCategory();
   };
   componentDidUpdate() {
-    if (this.props.update == true) {
-      if (this.props.history.location.pathname == "/penjualan")
+    if (this.props.update === true) {
+      if (this.props.history.location.pathname === "/penjualan")
         this.props.getOrderList();
       else {
         this.props.getOrderCategory(this.props.statusOrder);
@@ -34,9 +34,9 @@ class Penjualan extends Component {
       <div>
         {localStorage.getItem("isLogin") ? (
           <React.Fragment>
-            <Header {...this.props.userData} />
+            <Header {...this.props.userData} {...this.props} />
             <div>
-              <PenjualanMenu {...this.props} />
+              <PenjualanMenu {...this.props.userData} {...this.props} />
             </div>
           </React.Fragment>
         ) : (

@@ -206,7 +206,7 @@ export default function Notif() {
           Notifikasi terkait transaksi kamu bakal muncul di sini
         </Typography>
         <hr style={{ width: "1000px", margin: "20px 0 0 -30px" }} />
-        <Grid item sm={12} sm container>
+        <Grid item xm={12} sm container>
           <Grid sm={6}>
             <Link style={{ color: "#00b906" }}>
               <Typography style={{ fontSize: "13px" }}>

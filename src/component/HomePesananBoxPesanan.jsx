@@ -35,7 +35,7 @@ export default function BoxPesanan(props) {
             variant="h6"
             component="h6"
           >
-            {props.orderData.filter((item) => item.status == "baru").length}
+            {props.orderData.filter((item) => item.status === "baru").length}
           </Typography>
         </CardActionArea>
         <CardActionArea>
@@ -53,7 +53,10 @@ export default function BoxPesanan(props) {
             variant="h6"
             component="h6"
           >
-            {props.orderData.filter((item) => item.status == "tersedia").length}
+            {
+              props.orderData.filter((item) => item.status === "tersedia")
+                .length
+            }
           </Typography>
         </CardActionArea>
         <CardActionArea>

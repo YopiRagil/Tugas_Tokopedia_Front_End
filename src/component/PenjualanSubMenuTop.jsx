@@ -42,7 +42,7 @@ export default function PenjualanSubMenuTop(props) {
     props.history.push("/penjualan");
   };
   return (
-    <Card className={classes.root} style={{ margin: "0 -10px 0 -20px" }}>
+    <Card className={classes.root} style={{ margin: "0 -10px 20px -20px" }}>
       <Grid container justify="flex-start" alignItems="center">
         <h6
           style={{

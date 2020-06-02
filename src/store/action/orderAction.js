@@ -11,8 +11,6 @@ export const getOrderList = () => {
         await dispatch({
             type: "LOADING_ORDER"
         });
-        // console.log("cek sort", sort)
-        // console.log("cek date", startDate)
         const response = await axios.get(orderUrl + "/semua", {
             headers: {
                 Authorization: 'Bearer ' + token
@@ -40,8 +38,7 @@ export const getOrderCategory = (statusOrder) => {
         await dispatch({
             type: "LOADING_ORDER"
         });
-        // console.log("cek date", startDate)
-        if (statusOrder == undefined) {
+        if (statusOrder === undefined) {
             await dispatch({
                 type: "LOADING_ORDER"
             });
@@ -62,7 +59,7 @@ export const getOrderCategory = (statusOrder) => {
         });
         dispatch({
             type: "GET_ORDER_ALL",
-            payload: response.data.filter(item => item.status == statusOrder),
+            payload: response.data.filter(item => item.status === statusOrder),
         })
     }
 }
@@ -72,7 +69,7 @@ export const changeStatusOrder = (id, statusChange) => {
     return async (dispatch, getState) => {
         var resi = getState().order.resi;
         // console.log("resi", resi)
-        if (statusChange == "dikirim" && resi == undefined) {
+        if (statusChange === "dikirim" && resi == undefined) {
             alert("resi belum diisi")
         } else {
             await dispatch({

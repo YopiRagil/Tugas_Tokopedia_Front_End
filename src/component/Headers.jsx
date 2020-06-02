@@ -1,5 +1,5 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -213,9 +213,7 @@ export default function PrimarySearchAppBar(props) {
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
-                  input: classes.inputInput,
                 }}
-                inputProps={{ "aria-label": "search" }}
                 inputProps={{ "aria-label": "search" }}
               />
             </ThemeProvider>
@@ -223,13 +221,11 @@ export default function PrimarySearchAppBar(props) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton
-              aria-label="notif of current user"
               aria-controls={notifId}
               aria-haspopup="true"
               onClick={handleNotifMenuOpen}
               color="inherit"
               aria-label="show 17 new notifications"
-              color="inherit"
             >
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />

@@ -55,7 +55,11 @@ export default function NavbarProfile(props) {
             </IconButton>
           </Grid>
           <Grid sm={2}>
-            <img className="fotoProfile mb-3" src={props.avatar} />
+            <img
+              className="fotoProfile mb-3"
+              src={props.avatar}
+              alt="profile"
+            />
           </Grid>
         </Grid>
         <hr />
